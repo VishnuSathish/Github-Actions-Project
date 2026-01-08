@@ -22,12 +22,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: react-app
 
       - name: Build App
         run: npm run build
-        working-directory: react-app
 
       - name: Run tests
         run: npm test
-        working-directory: react-app
