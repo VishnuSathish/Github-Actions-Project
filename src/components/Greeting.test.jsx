@@ -8,7 +8,7 @@ describe("Greeting component", () => {
     const greetingElement = screen.getByTestId("greeting");
     expect(greetingElement).toBeInTheDocument();
     expect(greetingElement).toHaveTextContent(
-      "Hello you, welcome to the Github Actions Project"
+      "Hello, welcome to the Github Actions Project"
     );
   });
 });

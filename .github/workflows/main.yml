@@ -28,3 +28,23 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  docker-build-and-push:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: docker build -t "${{ secrets.DOCKERHUB_USERNAME }}/github-actions-project:latest" . 
+
+      - name: Push Docker image
+        run: docker push "${{ secrets.DOCKERHUB_USERNAME }}/github-actions-project:latest"
